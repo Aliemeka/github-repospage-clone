@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Github repository of Emeka Allison">
+    <link rel="alternate icon" class="js-site-favicon" type="image/png" href="https://github.githubassets.com/favicons/favicon.png">
+    <link rel="icon" class="js-site-favicon" type="image/svg+xml" href="https://github.githubassets.com/favicons/favicon.svg">
     <link rel="stylesheet" href="css/style.css">
     <title>Aliemeka - Github Repos</title>
 </head>
@@ -47,7 +49,7 @@
                     </a>
                     <a href="/">
                         <div class="nav-avatar avatar">
-                            <img src="twitter-profile-pic.jpg" class="img-fluid"/>
+                            <img src="twitter-profile-pic.jpg" class="img-fluid avatar-img"/>
                         </div>
                     </a>
                 </div>
@@ -58,7 +60,7 @@
         <aside class="author-details">
             <div class="author-bio flex">
                 <div class="avatar author-avatar">
-                    <img src="twitter-profile-pic.jpg" alt="Emeka Allison" class="img-fluid"/>
+                    <img src="twitter-profile-pic.jpg" alt="Emeka Allison" class="img-fluid avatar-img"/>
                 </div>
                 <div class="author-details">
                     <h1 class="author-name" id="full-name">Emeka Allison</h1>
@@ -78,7 +80,7 @@
                 <p>Focusing</p>
             </div>
             <div class="description">
-                <p>Web, Data, DevOps and the Cloud.</p>
+                <p id="bio">Web, Data, DevOps and the Cloud.</p>
             </div>
             <button class="profile-button btn btn-block btn-light">
                 Follow
@@ -88,14 +90,14 @@
                     <ul class="author-contact no-style">
                         <li class="lg-visible">
                             <svg class="octicon octicon-location" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M11.536 3.464a5 5 0 010 7.072L8 14.07l-3.536-3.535a5 5 0 117.072-7.072v.001zm1.06 8.132a6.5 6.5 0 10-9.192 0l3.535 3.536a1.5 1.5 0 002.122 0l3.535-3.536zM8 9a2 2 0 100-4 2 2 0 000 4z"></path></svg>
-                            Nigeria
+                            <span id="location">Nigeria</span>
                         </li>
                         <li class="flex">
                             <svg class="octicon octicon-mail" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
                                 <path fill-rule="evenodd" d="M1.75 2A1.75 1.75 0 000 3.75v.736a.75.75 0 000 .027v7.737C0 13.216.784 14 1.75 14h12.5A1.75 1.75 0 0016 12.25v-8.5A1.75 1.75 0 0014.25 2H1.75zM14.5 4.07v-.32a.25.25 0 00-.25-.25H1.75a.25.25 0 00-.25.25v.32L8 7.88l6.5-3.81zm-13 1.74v6.441c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25V5.809L8.38 9.397a.75.75 0 01-.76 0L1.5 5.809z"></path>
                             </svg>
                             <a href="mailto:emekaallison4@gmail.com" 
-                               subject="Hi Emeka! I will like to work with you on ..." class="text-dark">
+                               subject="Hi Emeka! I will like to work with you on ..." class="text-dark" id="email">
                                 emekaallison4@gmail.com
                             </a></li>
                         <li class="lg-visible">
@@ -108,10 +110,10 @@
                 </address>
                 <ul class="author-activity flex no-style">
                     <li class="flex">
-                        <span class="text-bold">4</span> followers          · 
+                        <span class="text-bold" id="follower-count">4</span> followers          · 
                     </li> 
                     <li class="flex">
-                        <span class="text-bold">8</span> following        · 
+                        <span class="text-bold" id="following-count">8</span> following        · 
                     </li>
                     <li class="flex">
                         <span class="text-bold">20</span>
@@ -259,5 +261,6 @@
             </article>
         </section>
     </main>
+    <script src="js/main.js" defer></script>
 </body>
 </html>

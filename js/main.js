@@ -12,12 +12,17 @@ const profileImg = document.querySelectorAll(".avatar-img"); //Gets elements for
 const locationElm = document.getElementById("location"); //Gets element for location
 const emailElm = document.getElementById("email"); //Gets element for email
 const twitterElm = document.getElementById("twitter-account"); //Gets element for email
+const followersCount = document.getElementById("follower-count");
+const followingCount = document.getElementById("following-count");
+const starsCount = document.getElementById("stars-count");
+
+const repoList = document.getElementById("repos") //Gets list of repositories
 
 fetch('https://api.github.com/graphql', {
         method: 'POST',
         headers: { 
             "Content-Type": "application/json",
-            "Authorization": 'Bearer a929a12daf2e1a881d2ebd52d900bdd70f9cdf17'
+            "Authorization": 'Bearer df41127570dd6f380e732ed9b3e364551f231ffc'
         },
         body: JSON.stringify({
             query: `
@@ -31,14 +36,24 @@ fetch('https://api.github.com/graphql', {
                         location
                         email
                         twitterUsername
-                        repositories(last: 20) {
+                        repositories(first: 20, orderBy: {field: UPDATED_AT, direction: DESC}) {
                             nodes {
                                 name
                                 url
                                 updatedAt
                                 description
                                 stargazerCount
+                                isPrivate
                             }
+                        }
+                        followers(first: 20) {
+                            totalCount
+                        }
+                        following(first: 20) {
+                            totalCount
+                        }
+                        starredRepositories {
+                            totalCount
                         }
                     }
                 }`
@@ -46,9 +61,11 @@ fetch('https://api.github.com/graphql', {
     })
     .then(res => res.json())
     .then(data => {
+        //remove the loader
         loadContainer.classList.add("d-none");
-        userData = data.data.user;
-        console.log(userData)
+
+        // Update onwer information
+        userData = data.data.user; //user data object
         fullNameElm.innerText = userData.name;
         usernameElm.innerText = userData.login;
         bioElm.innerText = userData.bio;
@@ -60,6 +77,69 @@ fetch('https://api.github.com/graphql', {
         emailElm.href = `mailto:${userData.email}`;
         twitterElm.innerText = userData.twitterUsername;
         twitterElm.href = `https://twitter.com/${userData.twitterUsername}`;
+        
+        // Get followers, following and starred repos count
+        const { followers, following, starredRepositories } = userData;
+
+        //update counts
+        followersCount.innerText = followers.totalCount;
+        followingCount.innerText = following.totalCount;
+        starsCount.innerText = starredRepositories.totalCount;
+
+        //Repository nodes object
+        const { nodes } = userData.repositories;
+        let repoDivs = "";
+        nodes.forEach(node =>{
+            const { name, url, updatedAt, description, stargazerCount, isPrivate} = node;
+            const updateDate = new Date(updatedAt);
+
+            //get time difference
+            const diff = (Date.now() - updateDate) / (1000 * 3600 * 24);
+            const diffSec = Math.round((Date.now() - updateDate) / (1000));
+            const diffMin = Math.round((Date.now() - updateDate) / (1000 * 60));
+            const diffHour = Math.round((Date.now() - updateDate) / (1000 * 3600));
+            const dayDiff = Math.round(diff);
+            let timeDiff;
+            
+            if(diffSec < 60){
+                timeDiff = `${diffSec} ${ diffSec > 1 ? "seconds" : "second"} ago`;
+            } else if (diffMin < 60){
+                timeDiff = `${diffMin} ${ diffMin > 1 ? "minutes" : "minute"} ago`;
+            } else if (diffHour < 24) {
+                timeDiff = `${diffHour} ${ diffHour > 1 ? "hours" : "hour"} ago`;
+            } else if (dayDiff < 30){
+                timeDiff = `${dayDiff} ${ dayDiff > 1 ? "days" : "day"} ago`
+            } else {
+                const month = updateDate.toLocaleString("en-US", {month: "long"}) 
+                const day = updateDate.toLocaleString("en-US", {day: "numeric"})
+                timeDiff = `on ${month.substring(0, 3)} ${day}`
+            }
+
+            // Ensure private repos are not revealed
+            if(!isPrivate){
+                repoDivs+= (
+                    `<li class="repo-item flex">
+                        <div class="repo-info">
+                            <h3 class="repo-name">
+                                <a href=${url} class="text-link" rel="noreferrer noopener">${name}</a>
+                            </h3>
+                            <p class="repo-description">
+                                ${description ? description : ""}
+                            </p>
+                            <ul class="flex no-style repo-details">
+                                <li>Javascript</li>
+                                <li class="flex">${stargazerCount}</li>
+                                <li>Updated ${timeDiff}</li>
+                            </ul>
+                        </div>
+                        <div class="repo-info-right flex">
+                            <button class="btn btn-light repo-button" type="button">Star</span></button>
+                        </div>
+                    </li>
+                `)
+            }
+        })
+        repoList.innerHTML = repoDivs;
     })
     .catch(error =>{
         loader.classList.add("d-none");
@@ -67,71 +147,3 @@ fetch('https://api.github.com/graphql', {
         console.error(error);
     })
 
-    
-
-
-
-// a929a12daf2e1a881d2ebd52d900bdd70f9cdf17
-
-// document.body.addEventListener('load', ()=>{
-//     fetch('https://api.github.com/graphql', {
-//         method: 'POST',
-//         headers: { "Content-Type": "application/json"},
-//         body: JSON.stringify({
-//             query: `{
-//                 query {
-//                     user(login: "Aliemeka") {
-//                         name
-//                         url
-//                         login
-//                         bio
-//                         avatarUrl
-//                         location
-//                         email
-//                         twitterUsername
-//                         repositories(last: 20) {
-//                             nodes {
-//                                 name
-//                                 url
-//                                 updatedAt
-//                                 description
-//                                 stargazerCount
-//                             }
-//                         }
-//                     }
-//                 } 
-//             }`
-//         })
-//     })
-//     .then(res => res.json())
-//     .then(data => {
-//         console.log(data)
-//     })
-//     .catch(error =>{
-//         console.log(error)
-//     })
-// })
-
-/*
-query {
-    user(login: "Aliemeka") {
-      name
-      url
-      login
-      bio
-      avatarUrl
-      location
-      email
-      twitterUsername
-       repositories(last: 20) {
-         nodes {
-          name
-          url
-          updatedAt
-          description
-          stargazerCount
-         }
-       }
-     }
-  }
-*/

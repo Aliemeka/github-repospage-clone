@@ -100,8 +100,43 @@ a{
     padding-top: 2.3em;
 }
 
+.w-100{
+    width: 100%;
+}
+
 ul.no-style{
     list-style: none;
+}
+
+.over-all{
+    position: absolute;
+    background-color: var(--white);
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader{
+    width: 10em;
+    height: 10em;
+    border-radius: 50%;
+    border-bottom: 5px solid var(--green-color);
+    animation: spin 1.5s linear infinite;
+}
+
+.error{
+    display: none;
+}
+
+@keyframes spin{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
 }
 
 button.btn{
@@ -401,6 +436,16 @@ button.btn{
     width: auto;
 }
 
+.d-none{
+    display: none !important;
+}
+
+.d-block{
+    display: block !important;
+}
+
+
+
 
 
 
@@ -440,6 +485,7 @@ button.btn{
     .author-details{
         padding-left: 1.5em;
         padding-top: 2em;
+        padding-right: 2em;
     }
 
     .author-avatar{

@@ -49,7 +49,7 @@
                     </a>
                     <a href="/">
                         <div class="nav-avatar avatar">
-                            <img src="twitter-profile-pic.jpg" class="img-fluid avatar-img"/>
+                            <img src="https://via.placeholder.com/150" class="img-fluid avatar-img"/>
                         </div>
                     </a>
                 </div>
@@ -57,14 +57,18 @@
         </nav>
     </header>
     <main class="grid container">
+        <div class="over-all flex" id="loader-area">
+            <div class="loader" id="loader"></div>
+            <p class="text-grey error" id="error-message">Error fetching data from GitHub</p>
+        </div>
         <aside class="author-details">
             <div class="author-bio flex">
                 <div class="avatar author-avatar">
-                    <img src="twitter-profile-pic.jpg" alt="Emeka Allison" class="img-fluid avatar-img"/>
+                    <img src="https://via.placeholder.com/150" alt="Emeka Allison" class="img-fluid avatar-img"/>
                 </div>
                 <div class="author-details">
-                    <h1 class="author-name" id="full-name">Emeka Allison</h1>
-                    <h2 class="author-username" id="username">Aliemeka</h2>
+                    <h1 class="author-name" id="full-name">--</h1>
+                    <h2 class="author-username" id="username">---</h2>
                 </div>
                 <div class="status flex lg-visible">
                     <div class="emoji">
@@ -80,7 +84,7 @@
                 <p>Focusing</p>
             </div>
             <div class="description">
-                <p id="bio">Web, Data, DevOps and the Cloud.</p>
+                <p id="bio">---</p>
             </div>
             <button class="profile-button btn btn-block btn-light">
                 Follow
@@ -90,21 +94,21 @@
                     <ul class="author-contact no-style">
                         <li class="lg-visible">
                             <svg class="octicon octicon-location" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M11.536 3.464a5 5 0 010 7.072L8 14.07l-3.536-3.535a5 5 0 117.072-7.072v.001zm1.06 8.132a6.5 6.5 0 10-9.192 0l3.535 3.536a1.5 1.5 0 002.122 0l3.535-3.536zM8 9a2 2 0 100-4 2 2 0 000 4z"></path></svg>
-                            <span id="location">Nigeria</span>
+                            <span id="location">...</span>
                         </li>
                         <li class="flex">
                             <svg class="octicon octicon-mail" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
                                 <path fill-rule="evenodd" d="M1.75 2A1.75 1.75 0 000 3.75v.736a.75.75 0 000 .027v7.737C0 13.216.784 14 1.75 14h12.5A1.75 1.75 0 0016 12.25v-8.5A1.75 1.75 0 0014.25 2H1.75zM14.5 4.07v-.32a.25.25 0 00-.25-.25H1.75a.25.25 0 00-.25.25v.32L8 7.88l6.5-3.81zm-13 1.74v6.441c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25V5.809L8.38 9.397a.75.75 0 01-.76 0L1.5 5.809z"></path>
                             </svg>
-                            <a href="mailto:emekaallison4@gmail.com" 
+                            <a href="mailto:..." 
                                subject="Hi Emeka! I will like to work with you on ..." class="text-dark" id="email">
-                                emekaallison4@gmail.com
+                                ....
                             </a></li>
                         <li class="lg-visible">
                             <svg class="octicon octicon-mail" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
                                 <path fill-rule="evenodd" d="M1.75 2A1.75 1.75 0 000 3.75v.736a.75.75 0 000 .027v7.737C0 13.216.784 14 1.75 14h12.5A1.75 1.75 0 0016 12.25v-8.5A1.75 1.75 0 0014.25 2H1.75zM14.5 4.07v-.32a.25.25 0 00-.25-.25H1.75a.25.25 0 00-.25.25v.32L8 7.88l6.5-3.81zm-13 1.74v6.441c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25V5.809L8.38 9.397a.75.75 0 01-.76 0L1.5 5.809z"></path>
                             </svg>
-                            <a href="http://twitter.com/Aliemeka" target="_blank" rel="noopener noreferrer" class="text-dark">alliemeka</a>
+                            <a href="http://twitter.com/..." target="_blank" rel="noopener noreferrer" class="text-dark" id="twitter-account">...</a>
                         </li>
                     </ul>
                 </address>
@@ -261,6 +265,6 @@
             </article>
         </section>
     </main>
-    <script src="js/main.js" defer></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

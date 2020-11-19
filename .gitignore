@@ -2,4 +2,6 @@ schema.docs.graphql
 text.txt
 .env
 
+functions/
+
 node_modules/

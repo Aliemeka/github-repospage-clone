@@ -18,54 +18,14 @@ const starsCount = document.getElementById("stars-count");
 
 const repoList = document.getElementById("repos") //Gets list of repositories
 
-fetch('https://api.github.com/graphql', {
-        method: 'POST',
-        headers: { 
-            "Content-Type": "application/json",
-            "Authorization": 'Bearer cc72af4786881aa87cd40baada5108e56c1c948f'
-        },
-        body: JSON.stringify({
-            query: `
-                query {
-                    user(login: "Aliemeka") {
-                        name
-                        url
-                        login
-                        bio
-                        avatarUrl
-                        location
-                        email
-                        twitterUsername
-                        repositories(first: 20, orderBy: {field: UPDATED_AT, direction: DESC}) {
-                            nodes {
-                                name
-                                url
-                                updatedAt
-                                description
-                                stargazerCount
-                                isPrivate
-                            }
-                        }
-                        followers(first: 20) {
-                            totalCount
-                        }
-                        following(first: 20) {
-                            totalCount
-                        }
-                        starredRepositories {
-                            totalCount
-                        }
-                    }
-                }`
-        })
-    })
+fetch('/fetch-gitdata')
     .then(res => res.json())
     .then(data => {
         //remove the loader
         loadContainer.classList.add("d-none");
 
         // Update onwer information
-        userData = data.data.user; //user data object
+        userData = data.user; //user data object
         fullNameElm.innerText = userData.name;
         usernameElm.innerText = userData.login;
         bioElm.innerText = userData.bio;

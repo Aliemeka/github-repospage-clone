@@ -1,2 +1,5 @@
 schema.docs.graphql
 text.txt
+.env
+
+node_modules/

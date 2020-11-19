@@ -1,18 +1,17 @@
-require('dotenv').config()
-const express = require("express")
+require('dotenv').config();
+const express = require("express");
 const fetch = require('node-fetch');
+const serverless = require("serverless-http")
 
 const app = express();
 
-app.use(express.json());
-app.use(express.urlencoded());
-app.use(express.static("src"));
+const router = express.Router();
 
 app.get("/", function(req, res) {
   res.sendFile(__dirname + "index.html")
 })
 
-app.get("/fetch-gitdata", function(req, res){
+router.get("/", function(req, res){
   const options = {
     method: 'POST',
     headers: { 
@@ -59,8 +58,6 @@ app.get("/fetch-gitdata", function(req, res){
     .then(data => res.json(data.data))
 })
 
-const port = process.env.PORT || 5000
+app.use('/.netlify/functions/api', router);
 
-app.listen(port, () => {
-  console.log("Server is listening at port ", port)
-})
+module.exports.handler = serverless(app);

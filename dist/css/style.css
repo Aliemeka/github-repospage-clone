@@ -122,6 +122,7 @@ ul.no-style{
     width: 10em;
     height: 10em;
     border-radius: 50%;
+    border: 5px solid transparent;
     border-bottom: 5px solid var(--green-color);
     animation: spin 1.5s linear infinite;
 }

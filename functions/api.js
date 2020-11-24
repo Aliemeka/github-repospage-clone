@@ -1,7 +1,7 @@
 require('dotenv').config();
-const axios = require("axios");
+import axios from 'axios';
 
-exports.handler = async function(event, context, callback){
+exports.handler = async function(event, context){
 
   const TOKEN = process.env.GITHUB_TOKEN;
 
@@ -41,10 +41,10 @@ exports.handler = async function(event, context, callback){
   };
 
   const send = body =>{
-      callback(null, {
+      return {
         statusCode: 200,
         body: JSON.stringify(body)
-      });
+      }
   };
 
   const getGitData = payload =>{

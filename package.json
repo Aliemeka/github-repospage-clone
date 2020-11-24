@@ -4,8 +4,7 @@
   "description": "Github clone",
   "main": "index.js",
   "scripts": {
-    "start": "netlify-lambda serve functions",
-    "build": "netlify-lambda build functions"
+    "test": "test"
   },
   "repository": {
     "type": "git",

@@ -18,7 +18,7 @@ const starsCount = document.getElementById("stars-count");
 
 const repoList = document.getElementById("repos") //Gets list of repositories
 
-fetch('/.netlify/functions/api')
+fetch('.netlify/functions/api')
     .then(res => res.json())
     .then(data => {
         //remove the loader

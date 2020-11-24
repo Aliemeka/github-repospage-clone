@@ -104,6 +104,6 @@ fetch('/.netlify/functions/api')
     .catch(error =>{
         loader.classList.add("d-none");
         errorMessage.classList.add("d-block");
-        console.error(error);
+        console.log(error);
     })
 

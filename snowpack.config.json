@@ -2,5 +2,6 @@
     "mount": {
       "dist": "/",
       "src": "/"
-    }
+    },
+    "plugins": ["@snowpack/plugin-dotenv"]
   }

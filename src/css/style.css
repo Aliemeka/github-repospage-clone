@@ -70,12 +70,20 @@ a{
     margin-right: auto;
 }
 
+.mr-1{
+    margin-left: .6em;
+}
+
 .text-white{
     color: var(--white) !important;
 }
 
 .text-link{
     color: var(--link-color) !important;
+}
+
+.text-right{
+    text-align: right !important;
 }
 
 .text-bold{
@@ -414,6 +422,7 @@ button.btn{
 .repo-info .repo-description{
     padding-right: 28px;
     color: var(--dark-grey);
+    width: 75%;
     margin-bottom: 8px;
 }
 
@@ -433,8 +442,9 @@ button.btn{
 }
 
 .repo-info-right button{
-    display: block;
-    width: auto;
+    padding: 3px 12px;
+    display: flex;
+    align-items: center;
 }
 
 .d-none{
@@ -461,6 +471,8 @@ button.btn{
 
     .main-section{
         padding-top: 1.8em;
+        padding-left: 16px;
+        padding-right: 1.2em;
     }
 
     .lg-visible{
@@ -484,9 +496,9 @@ button.btn{
     }
     
     .author-details{
-        padding-left: 1.5em;
+        padding-left: 1em;
         padding-top: 2em;
-        padding-right: 2em;
+        padding-right: 1em;
     }
 
     .author-avatar{

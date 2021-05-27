@@ -1,10 +1,8 @@
-require('dotenv').config();
-const axios = require('axios');
+import axios from 'axios';
+import env from '@snowpack/plugin-dotenv'
 
-
-
-const TOKEN = process.env.GITHUB_TOKEN;
-
+const { GITHUB_TOKEN } = env;
+export const TOKEN = GITHUB_TOKEN;
 
 export const queryParameter = {
     query: `
@@ -12,6 +10,7 @@ export const queryParameter = {
             user(login: "Aliemeka") {
                 url
                 login
+                name
                 bio
                 avatarUrl
                 location
@@ -43,7 +42,7 @@ export const queryParameter = {
 
 export const getGitData = payload =>{
     axios.defaults.headers = {
-        Authorization: `Bearer ${TOKEN}`
+        Authorization: `token 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`
     }
     axios.post(`https://api.github.com/graphql`, payload)
     .then(res => {

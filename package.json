@@ -4,7 +4,9 @@
   "description": "Github clone",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "clean": "rm dist/bundle.js",
+    "start": "snowpack dev",
+    "build": "snowpack build"
   },
   "repository": {
     "type": "git",
@@ -18,10 +20,9 @@
   "homepage": "https://github.com/Aliemeka/github-repospage-clone#readme",
   "dependencies": {
     "axios": "^0.21.0",
-    "body-parser": "^1.19.0",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "netlify-lambda": "^2.0.1",
-    "serverless-http": "^2.6.0"
+    "dotenv": "^8.2.0"
+  },
+  "devDependencies": {
+    "snowpack": "latest"
   }
 }

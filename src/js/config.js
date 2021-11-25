@@ -42,7 +42,7 @@ export const queryParameter = {
 
 export const getGitData = payload =>{
     axios.defaults.headers = {
-        Authorization: `token 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`
+        Authorization: `token ${TOKEN}`
     }
     axios.post(`https://api.github.com/graphql`, payload)
     .then(res => {
